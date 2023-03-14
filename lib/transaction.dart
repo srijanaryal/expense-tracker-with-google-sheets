@@ -1,49 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:shop/plus_button.dart';
 
-class Transaction extends StatelessWidget {
+class MyTransaction extends StatelessWidget {
   final String transactionName;
   final String money;
   final String expenseOrIncome;
-  const Transaction({
-    Key? key,
+
+  MyTransaction({
     required this.transactionName,
     required this.money,
     required this.expenseOrIncome,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Expanded(
-          child: Container(
-              child: Center(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.grey[100],
-              height: 65,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(transactionName),
-                    Text(
-                      expenseOrIncome == 'expense' ? '-' : '+' '\$' + money,
+      padding: const EdgeInsets.only(bottom: 12.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          padding: EdgeInsets.all(15),
+          color: Colors.grey[100],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle, color: Colors.grey[500]),
+                    child: Center(
+                      child: Icon(
+                        Icons.attach_money_outlined,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(transactionName,
                       style: TextStyle(
-                          color: (expenseOrIncome == 'expense'
-                              ? Colors.red
-                              : Colors.green)),
-                    )
-                  ],
+                        fontSize: 16,
+                        color: Colors.grey[700],
+                      )),
+                ],
+              ),
+              Text(
+                (expenseOrIncome == 'expense' ? '-' : '+') + '\$' + money,
+                style: TextStyle(
+                  //fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color:
+                      expenseOrIncome == 'expense' ? Colors.red : Colors.green,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ))),
+      ),
     );
   }
 }

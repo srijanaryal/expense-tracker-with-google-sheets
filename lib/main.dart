@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shop/api/google_sheets_api.dart';
 import 'HomePage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  GoogleSheetsApi().init();
   runApp(const MyApp());
 }
 

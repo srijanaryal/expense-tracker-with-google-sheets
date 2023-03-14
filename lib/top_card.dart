@@ -1,104 +1,127 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class TopCard extends StatelessWidget {
+class TopNeuCard extends StatelessWidget {
   final String balance;
   final String income;
   final String expense;
-  const TopCard(
-      {super.key,
-      required this.balance,
-      required this.income,
-      required this.expense});
+
+  TopNeuCard({
+    required this.balance,
+    required this.expense,
+    required this.income,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.grey[300],
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.shade500,
-                      offset: Offset(4.0, 4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1.0),
-                  BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-4.0, -4.0),
-                      blurRadius: 15,
-                      spreadRadius: 1.0),
-                ]),
-            child: Center(
-                child: Column(children: [
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+        height: 200,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('B A L A N C E',
+                  style: TextStyle(color: Colors.grey[500], fontSize: 16)),
               Text(
-                'B A L A N C E ',
-                style: TextStyle(color: Colors.grey, fontSize: 25),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                balance,
-                style: TextStyle(color: Colors.black, fontSize: 25),
+                '\$' + balance,
+                style: TextStyle(color: Colors.grey[800], fontSize: 40),
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
-                        Icon(
-                          Icons.arrow_upward,
-                          color: Colors.green,
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey[200],
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.arrow_upward,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Income',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                            Text('Income',
+                                style: TextStyle(color: Colors.grey[500])),
+                            SizedBox(
+                              height: 5,
                             ),
-                            Text(
-                              income,
-                              style: TextStyle(color: Colors.green),
-                            )
+                            Text('\$' + income,
+                                style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontWeight: FontWeight.bold)),
                           ],
-                        ),
+                        )
                       ],
                     ),
                     Row(
                       children: [
-                        Column(
-                          children: [
-                            Text(
-                              'Expenses',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey[200],
+                          ),
+                          child: Center(
+                            child: Icon(
+                              Icons.arrow_downward,
+                              color: Colors.red,
                             ),
-                            Text(
-                              expense,
-                              style: TextStyle(color: Colors.red),
-                            )
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Expense',
+                                style: TextStyle(color: Colors.grey[500])),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text('\$' + expense,
+                                style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontWeight: FontWeight.bold)),
                           ],
-                        ),
-                        Icon(
-                          Icons.arrow_downward,
-                          color: Colors.red,
-                        ),
+                        )
                       ],
-                    ),
+                    )
                   ],
                 ),
-              ),
-            ]))));
+              )
+            ],
+          ),
+        ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.grey[300],
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.shade500,
+                  offset: Offset(4.0, 4.0),
+                  blurRadius: 15.0,
+                  spreadRadius: 1.0),
+              BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4.0, -4.0),
+                  blurRadius: 15.0,
+                  spreadRadius: 1.0),
+            ]),
+      ),
+    );
   }
 }
